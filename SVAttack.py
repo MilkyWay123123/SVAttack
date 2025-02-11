@@ -138,7 +138,7 @@ class Attacker():
                 projection_loss = computer_perceptual_loss(tx_2d, adData_2d)
                 # 3D kinematic loss
                 kinematics_loss = computer_perceptual_loss(tx, adData)
-                percepLoss = projection_loss + 0.01 * kinematics_loss
+                percepLoss = projection_loss + 0.2 * kinematics_loss
 
                 adData.grad = None
                 percepLoss.backward(retain_graph=True)
