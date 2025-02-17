@@ -17,7 +17,7 @@ from omegaconf import OmegaConf
 class Attacker():
     def __init__(self, args):
         super().__init__()
-        self.name = 'SingleViewAttack'
+        self.name = 'SVAttack'
         print(f'Operating parameters {args}')
         self.updateClip = args.updateClip
         self.classWeight = args.classWeight
@@ -163,11 +163,11 @@ class Attacker():
                         if torch.all(tx[i] == 0):
                             print('This raw data is out of order')
                         if torch.sum(tx[i] - adData[i]) != 0:
-                            if ty[i] != predictedLabels[i]:  # 保证此条数据原本就是模型可以识别正确的
+                            if flabels[i] != predictedLabels[i]:  # 保证此条数据原本就是模型可以识别正确的
                                 samples_x_list.append(tx[i].detach().clone().cpu())
                                 frames_list.append(tn[i].detach().clone().cpu())
                                 attck_samples_x_list.append(adData[i].detach().clone().cpu())
-                                attck_samples_y_list.append(ty[i].detach().clone().cpu())
+                                attck_samples_y_list.append(flabels[i].detach().clone().cpu())
                     break
 
                 cgsView = cgs.view(cgs.shape[0], -1)
