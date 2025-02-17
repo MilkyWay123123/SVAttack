@@ -1,4 +1,4 @@
-epochs: 2000
+epochs: 400
 classWeight: 0.6
 updateClip: 0.005
 class_num: 60
@@ -10,5 +10,5 @@ save_path: '/23085412008/SVAttack_Github/对抗样本/svattack/stgcn/ntu60-cs-gd
 batch_size: 64
 hookstatus: True
 hookratio: 0.1
-end_sample_num: 1000
+end_sample_num: 5000
 clamp_delta: 0.01
